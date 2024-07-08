@@ -7,8 +7,10 @@ import sys
 import math
 import time
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFile
 from matplotlib import pyplot as plt
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 module_path = os.path.abspath(os.path.join('D:/PPJ/Model/notebook'))
 if module_path not in sys.path:
@@ -89,11 +91,11 @@ def main():
                 reconstructed_img = vae.decoder(conv_out)
             
             pred_var, heatmap, filtered_arr = calculate_heatmap(image, reconstructed_img)
-            plot_heatmap(heatmap, save_path=r'\\172.28.1.207\SharedDIR\Predict_result\heatmap.png')
-            plot_histogram(filtered_arr, save_path=r'\\172.28.1.207\SharedDIR\Predict_result\histogram.png')
+            plot_heatmap(heatmap, save_path=r'D:\PPJ\Model\ShareDIR\Predict_result\heatmap.png')
+            plot_histogram(filtered_arr, save_path=r'D:\PPJ\Model\ShareDIR\Predict_result\histogram.png')
 
-            result_text = f'result : Good, var : {pred_var}' if pred_var <= CFG.threshold else f'result : Bad, var : {pred_var}'
-            save_result(result_text, r'\\172.28.1.207\SharedDIR\Predict_result\result.txt')
+            result_text = 'result : Good' if pred_var <= CFG.threshold else 'result : Bad'
+            save_result(result_text, r'D:\PPJ\Model\ShareDIR\Predict_result\result.txt')
 
             os.remove(CFG.image_path)
             print(f"{CFG.image_path} 파일을 삭제했습니다.")
