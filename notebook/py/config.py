@@ -33,4 +33,4 @@ epochs = 15
 batch_size = 32
 
 threshold = 13.0
-image_path = r'\\172.28.1.207\SharedDIR\Capture_data\image.jpg'
+image_path = r'D:\PPJ\Model\ShareDIR\Capture_data\image.jpg'
